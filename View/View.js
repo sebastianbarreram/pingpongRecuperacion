@@ -22,8 +22,14 @@ export class View {
     this.body.appendChild(this.divBar2)
     this.body.appendChild(this.divLine)
 
-
-
   }
+
+  getBar1(){
+    console.log("div bar1")
+    console.log(this.divBar1)
+    return this.divBar1
+  }
+
+  
 
 }
