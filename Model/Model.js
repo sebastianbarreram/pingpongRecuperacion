@@ -1,17 +1,12 @@
-export class Model {
-  constructor() {
-    this.time = 50;
+export default class Model {
+  constructor(controlGame, player1, player2) {
+    this.time = 100;
     this.movement = 20;
     this.movementBar = 20;
     this.width = document.documentElement.clientWidth - this.movement;
     this.height = document.documentElement.clientHeight - this.movement;
-    this.controlGame;
-    this.player1 = new Object();
-    this.player2 = new Object();
-    this.player1.keyPress = false;
-    this.player1.keyCode = null;
-    this.player2.keyPress = false;
-    this.player2.keyCode = null;
+    this.controlGame = controlGame;
+    this.player1 = player1;
+    this.player2 = player2;
   }
-
 }
