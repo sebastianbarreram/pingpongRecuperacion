@@ -1,13 +1,24 @@
 import Controller from "../Controller/Controller.js";
 import { game } from "../index.js";
 
+/**
+ * Esta clase representa a la vista del juego
+ * @author Sebastian Barrera Marín
+ * @version 1.0.0 12/06/2022
+ */
 export default class View {
 
+  /**
+   * Esta funcion detiene el juego y cambia el color de la pantalla a rojo
+   */
   static stop() {
     clearInterval(game.controlGame);
     document.body.style.background = "#f00";
   }
 
+  /**
+   * Esta funcion hace que la bola se mueva por la pantalla
+   */
   static moveBall() {
     this.checkStateBall();
     switch (ball.state) {
@@ -30,6 +41,9 @@ export default class View {
     }
   }
 
+  /**
+   * Esta funcion verifica el movimiento que debe llevar la bola
+   */
   static checkStateBall() {
     if (Controller.collidePlayer2(game)) {
       ball.direction = 2;
@@ -49,6 +63,9 @@ export default class View {
     }
   }
 
+  /**
+   * Esta funcion hace que las barras se muevan hacia arriba y abajo
+   */
   static moveBar() {
     if (game.player1.keyPress) {
       if (game.player1.keyCode == 81 && bar1.offsetTop >= 0)

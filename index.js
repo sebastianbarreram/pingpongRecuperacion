@@ -1,20 +1,29 @@
-import DATE from "./Controller/Controller.js";
+import Controller from "./Controller/Controller.js";
 import Model from "./Model/Model.js";
 import View from "./View/View.js";
 
 export let game = new Model()
 
+/**
+ * Esta funcion inicializa el juego
+ */
 function start() {
     init();
     game.controlGame = setInterval(play, game.time);
 }
 
+/**
+ * Esta funcion mueve la bola y las barras, y constantemente verifica el estado del juego
+ */
 function play() {
     View.moveBall(game);
     View.moveBar(game);
-    DATE.checkIfLost(game);
+    Controller.checkIfLost(game);
 }
 
+/**
+ * Esta funcion inicializa las variables del juego
+ */
 function init() {
     ball.style.left = 0;
     ball.state = 1;
@@ -27,6 +36,11 @@ function init() {
     game.player2.keyCode = null;
 }
 
+/**
+ * Esta funcion detecta la tecla al ser presionada y da la orden de 
+ * mover la barra respectiva
+ * @param {Event} e presionar una tecla
+ */
 document.onkeydown = function (e) {
     e = e || window.event;
     switch (e.keyCode) {
@@ -43,6 +57,12 @@ document.onkeydown = function (e) {
     }
 }
 
+/**
+ * Esta funcion detecta la tecla al momento de soltarla y da la orden
+ * de detener el movimiento de la barra respectiva
+ *  
+ * @param {Event} e soltar la tecla
+ */
 document.onkeyup = function (e) {
     if (e.keyCode == 81 || e.keyCode == 65)
         game.player1.keyPress = false;
